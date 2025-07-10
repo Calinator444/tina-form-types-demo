@@ -21,7 +21,10 @@ const parseIconName = (name: string) => {
   }
 };
 
-export const IconPickerInput = wrapFieldsWithMeta(({ input }) => {
+export const IconPickerInput = wrapFieldsWithMeta(({ input, ...props }) => {
+  console.log('IconPickerInput', input);
+  console.log('IconPickerProps', props);
+
   const [filter, setFilter] = React.useState('');
   const filteredBlocks = React.useMemo(() => {
     return Object.keys(IconOptions).filter((name) => {
@@ -33,6 +36,7 @@ export const IconPickerInput = wrapFieldsWithMeta(({ input }) => {
     ? parseIconName(input.value)
     : 'Select Icon';
 
+  input.value;
   //@ts-ignore
   const InputIcon = IconOptions[input.value] ? IconOptions[input.value] : null;
 
